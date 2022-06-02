@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\sellerConotroller;
+use App\Http\Controllers\userControler;
 
 
 
@@ -29,3 +30,5 @@ Route::post('userlogindata',[sellerConotroller::class,'userlogindata'])->name('u
 Route::get('logoutseller',[sellerConotroller::class,'logoutseller']);
 
 Route::post('selldata',[sellerConotroller::class,'selldata'])->name('selldata');
+
+Route::post('userdata',[userControler::class,'userdata'])->name('userdata');

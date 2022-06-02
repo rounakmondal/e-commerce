@@ -293,9 +293,47 @@
 <script src="user/js/jquery.magnific-popup.min.js"></script>
 <script src="user/js/jquery.animateNumber.min.js"></script>
 <script src="user/js/scrollax.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="user/js/google-map.js"></script>
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="user/js/google-map.js"></script> --}}
 <script src="user/js/main.js"></script>
+<script>
+  $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+  $( document ).ready(function() {
+    console.log('ranjan');
+    $('#register_btn').on('click', function(e){
+      e.preventDefault();
+      var name=$('#name').val();
+      var email=$('#email').val();
+      var number=$('#number').val();
+      var address=$('#address').val();
+      var password=$('#password').val();
+  console.log(name, email, password,number,address);
+  $.ajax({
+    url:'{{route("userdata")}}',
+    type:"POST",
+    data:{
+      name:name,
+      email:email,
+      number:number,
+      address:address,
+      password:password
+
+    }
+    success:function(res){
+        console.log(res);
+    }
+
+  })
+    })
+  })
   
+  
+  </script>  
+
+
 </body>
 </html>
