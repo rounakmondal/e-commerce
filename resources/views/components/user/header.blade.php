@@ -38,9 +38,32 @@
                           <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
                       </p>
               </div>
+{{--            
+            @php
+               $userdata = DB::table('user_data')->where('useremail', $email)->exists();
+              $myuserdata = DB::table('user_data')->where('useremail', $email)->get();
+
+            @endphp --}}
+
+          
+              @if(session()->has('useremail'))
+              @php
+
+              $userdata =  DB::table('userinfodatas')->where('email', session('useremail'))->first();
+       
+              @endphp
               <div class="reg">
-                  <p class="mb-0"><a href="#" class="mr-2"  data-toggle="modal" data-target="#register">Sign Up</a> <a href="#" data-toggle="modal" data-target="#exampleModal">Log In</a></p>
+                <p class="mb-0"><a href="#" class="mr-2">{{$userdata->name}} </a> <a href="userlogout">Log Out</a></p>
               </div>
+            @else
+            <div class="reg">
+                <p class="mb-0"><a href="#" class="mr-2"  data-toggle="modal" data-target="#register"> sign up </a> <a href="#" data-toggle="modal" data-target="#exampleModal">Log In</a></p>
+              </div>
+             @endif
+      
+              {{-- <div class="reg">
+                  <p class="mb-0"><a href="#" class="mr-2"  data-toggle="modal" data-target="#register">Sign Up</a> <a href="#" data-toggle="modal" data-target="#exampleModal">Log In</a></p>
+              </div> --}}
                   </div>
               </div>
           </div>

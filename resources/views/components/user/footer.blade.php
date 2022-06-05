@@ -296,44 +296,39 @@
 {{-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="user/js/google-map.js"></script> --}}
 <script src="user/js/main.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 <script>
-  $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-  $( document ).ready(function() {
-    console.log('ranjan');
-    $('#register_btn').on('click', function(e){
-      e.preventDefault();
-      var name=$('#name').val();
-      var email=$('#email').val();
-      var number=$('#number').val();
-      var address=$('#address').val();
-      var password=$('#password').val();
-  console.log(name, email, password,number,address);
-  $.ajax({
-    url:'{{route("userdata")}}',
-    type:"POST",
-    data:{
-      name:name,
-      email:email,
-      number:number,
-      address:address,
-      password:password
+  $(document).ready(function() {
+    toastr.options = {
+				'closeButton': true,
+				'debug': false,
+				'newestOnTop': false,
+				'progressBar': true,
+				'positionClass': 'toast-top-right',
+				'preventDuplicates': false,
+				'showDuration': '1000',
+				'hideDuration': '1000',
+				'timeOut': '5000',
+				'extendedTimeOut': '1000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
+      toastr.options.timeOut = 10000;
+      @if (Session::has('error'))
+          toastr.error('{{ Session::get('error') }}');
+      @elseif(Session::has('success'))
+          toastr.success('{{ Session::get('success') }}');
+      @elseif(Session::has('info'))
+          toastr.info('{{ Session::get('info') }}');
+      @endif
+     
+  });
 
-    }
-    success:function(res){
-        console.log(res);
-    }
-
-  })
-    })
-  })
-  
-  
-  </script>  
-
+</script>
 
 </body>
 </html>

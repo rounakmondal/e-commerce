@@ -11,6 +11,7 @@ use App\Http\Controllers\userControler;
 Route::get('/', function () {
     return view('user/welcome');
 });
+
 Route::get('/admin',[adminController::class,'admindashboard']);
 
 Route::get('/adminlogin',[adminController::class,'adminlogin']);
@@ -32,3 +33,7 @@ Route::get('logoutseller',[sellerConotroller::class,'logoutseller']);
 Route::post('selldata',[sellerConotroller::class,'selldata'])->name('selldata');
 
 Route::post('userdata',[userControler::class,'userdata'])->name('userdata');
+
+Route::post('userlogin',[userControler::class,'userlogin'])->name('userlogin');
+
+Route::get('userlogout',[userControler::class,'userlogout']);
