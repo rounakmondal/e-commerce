@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\models\admindata;
+use App\models\productdata;
+// use Illuminate\Support\Facades\DB;
 
 class adminController extends Controller
 {
@@ -22,6 +24,8 @@ class adminController extends Controller
        }
         return view('admin/adminlogin');
     }
+
+
 
 
     public function adminlogindata(Request $request){
@@ -57,4 +61,47 @@ class adminController extends Controller
         $request->session()->flush();
         return redirect('adminlogin');
     }
+
+    public function adminproduct(){
+        return view('admin/adminproduct');
+    }
+public function productapproved(Request $request ,$id){
+ 
+    
+    $port=DB::table('productdatas')->where('id', $id)->update(array('approval'=>1));
+if($port){
+    
+    return back()->with("success","product approved sucessfully...");
+}
+else{
+    return back()->with("error","product already approved ...");
+}
+
+}
+
+public function productdel(Request $request ,$id){
+ 
+    
+    $port=DB::table('productdatas')->where('id', $id)->update(array('approval'=>0));
+if($port){
+
+    return back()->with("info","product removed sucessfully...");
+}
+else{
+    return back()->with("error","not done yet...");
+}
+
+}
+ 
+public function sellers(){
+    return view('admin/sellers');
+}
+
+
+
+
+public function customers(){
+    return view('admin/customers');
+}
+
 }

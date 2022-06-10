@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 use App\models\userData;
 use App\models\sellerdata;
+use App\models\productdata;
+use App\models\cart;
 
 
 class sellerConotroller extends Controller
@@ -22,38 +24,35 @@ class sellerConotroller extends Controller
     public function userlogindata(Request $request){
 
 
-      // dd($requset->all());
+          
 
         $admindata=new userData;
         $email=$request->email;
         $password=$request->password;
-        $phone=$request->phone;
-        if ($phone) {
-          $user = DB::table('user_data')->where('ph_number', $phone)->exists();
-          $userdata = DB::table('user_data')->where('ph_number', $phone)->get();
-          if($user){
-            $request->session()->put('email', $email);
-          $adminpassword = $userdata->password;
-       if( $adminpassword == $password){
-        return response()->json(["success" =>"log in sucessfully"]);
-       }
-       else{
-        return response()->json(["error" => "password is incorrect"]);
-       }
+        $phone=$request->has('phone');
+     
+      //   if ($phone) {
+      //     $user = DB::table('sellerdatas')->where('phone_number', $phone)->exists();
+      //     $userdata = DB::table('sellerdatas')->where('phone_number', $phone)->first();
+      //     if($user){
+      //       $request->session()->put('email', $email);
+      //     $adminpassword = $userdata->password;
+      //     if( $adminpassword == $password){
+      //   return response()->json(["success" =>"log in sucessfully"]);
+      //  }
+      //      else{
+      //   return response()->json(["error" => "password is incorrect"]);
+      //  }
         
   
-      }
-      else{
-        return response()->json(["phone" => "phone_number not found"]);
-      }
-  
-
-
-
-        }
-        else{
-        $user = DB::table('user_data')->where('useremail', $email)->exists();
-        $userdata = DB::table('user_data')->where('useremail', $email)->get();
+      // }
+      //       else{
+      //   return response()->json(["phone" => "phone_number not found"]);
+      // }
+        // }
+    
+        $user = DB::table('sellerdatas')->where('email', $email)->exists();
+        $userdata = DB::table('sellerdatas')->where('email', $email)->first();
         if($user){
           $request->session()->put('email', $email);
         $adminpassword = $userdata->password;
@@ -71,7 +70,8 @@ class sellerConotroller extends Controller
     }
   }
 
-    }
+    
+
 public function logoutseller(Request $req){
 
   $req->session()->flush();
@@ -83,6 +83,8 @@ public function logoutseller(Request $req){
 public function sellreg(){
   return view('seller/sellerRegister');
 }
+
+
 public function selldata(Request $req){
   $userdata=new sellerdata;
   $userdata->fname=$req->full_name; 
@@ -99,6 +101,34 @@ else{
   return response()->json(["rnc"=>"register not done"]);
 }
 }
+
+
+
+public function productup(Request $req)
+{
+    $product = new productdata();
+    $product->product_name=$req->product_name;
+    $product->category=$req->category;
+    $product->email=session()->get('email');
+    $product->product_price=$req->product_price;
+    $product->product_desc=$req->product_desc;
+
+
+    $file=$req->file('fileone');
+    $extention=$file->getClientOriginalExtension();
+    $filename='one'.time().'.'.$extention;
+    $file->move('images/', $filename);
+    $product->product_oneimg=$filename;
+    $su=$product->save();
+    if ($su) {
+        return back()->with("success","product added sucessfully...");
+    } else {
+        return redirect('selldashboard')->with("error","product not added ");
+    }
+}
+
+
+
 
 
 }

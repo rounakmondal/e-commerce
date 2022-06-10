@@ -343,6 +343,52 @@
         <!-- Left side columns -->
      
         
+  <div class="myform">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center" id="exampleModalLabel" >Add a Product...</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="noneproduct();">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form action='{{route('productup')}}' enctype="multipart/form-data" method="POST">
+            @csrf
+                <div class="form-group">
+                  <label for="exampleInputEmail1">product_name....</label>
+                  <input type="name" name="product_name" class="form-control" style="height:30px;" id="name"  placeholder="Enter name ..">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"> category.....</label>
+                  <input type="text" class="form-control" style="height:30px;" id="email"  name="category" placeholder="Enter category...">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">product_price.....</label>
+                  <input type="number" class="form-control" style="height:30px;" id="number"  name="product_price" placeholder="Enter  product_price">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">product_desc...</label>
+                  <input type="address" class="form-control" style="height:30px;" id="address"  name="product_desc" placeholder="product_desc">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">product image</label>
+                  <input type="file" class="form-control" style="height:30px;" id="password" name="fileone" placeholder="enter your image">
+                </div>
+               
+<div class="text-center">
+                <button type="submit" class="btn btn-primary text-center mybtn" id="register_btn" >Add</button>
+            </div>
+          </form> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
 
 
             <!-- Recent Sales -->
@@ -351,7 +397,9 @@
             <!-- Agents-->
             <div class="col">
               <div class="card top-selling overflow-auto">
-
+                <div class="text-center">
+                  <button class="btn btn-primary" onclick="addproduct();">Add a product</button>
+                </div>
                 <div class="filter">
                   <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                   <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -362,7 +410,8 @@
                     <li><a class="dropdown-item" href="#">Today</a></li>
                     <li><a class="dropdown-item" href="#">This Month</a></li>
                     <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
+                  </ul>   
+                
                 </div>
 
                 <div class="card-body pb-0">
@@ -374,46 +423,28 @@
                         <th scope="col">Preview</th>
                         <th scope="col">Product</th>
                         <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
+                        <th scope="col">description</th>
+                   
                       </tr>
                     </thead>
                     <tbody>
+                      @php
+                      $pdata=DB::table('productdatas')->where('email',session('email'))->get();
+                      
+                      @endphp
+                      @foreach($pdata as $key)
+                      
+                      
                       <tr>
-                        <th scope="row"><a href="#"><img src="seller/dashboard/assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="seller/dashboard/assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="seller/dashboard/assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="seller/dashboard/assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="seller/dashboard/assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
+                                              <th scope="row"><a href="#"><img src={{"../images/".$key->product_oneimg}} alt=""></a></th>
+                                              <td><a href="#" class="text-primary fw-bold">{{$key->product_name}}</a></td>
+                                              <td>{{$key->product_price}}</td>
+                                              <td class="fw-bold">{{$key->product_desc}}</td>
+                                          
+                                              <td><a href={{"productedit/".$key->id}}><button class="btn btn-danger">edit</button></a></td>
+                                            </tr>
+                              @endforeach  
+               
                     </tbody>
                   </table>
 
@@ -424,8 +455,7 @@
 
          
             
-        
-          
+
 
   
       
@@ -434,6 +464,8 @@
     </section>
 
   </main><!-- End #main -->
+
+ 
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
@@ -448,10 +480,21 @@
       Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
     </div>
   </footer><!-- End Footer -->
+<style>
+.noneproduct{
+  display: none;
+}
+.addproduct{
+  display: block;
+}
+</style>
+
+
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
+
+
   <script src="seller/dashboard/assets/vendor/apexcharts/apexcharts.min.js"></script>
   <script src="seller/dashboard/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="seller/dashboard/assets/vendor/chart.js/chart.min.js"></script>
@@ -463,6 +506,60 @@
 
   <!-- Template Main JS File -->
   <script src="seller/dashboard/assets/js/main.js"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+	
+
+<script>
+$(document).ready(function(){
+  product.classList.add("noneproduct");
+});
+  function noneproduct(){
+    // console.log('hi i am ranjan mondal')
+  var product=document.querySelector('.myform');
+  product.classList.add("noneproduct");
+  }
+  function addproduct(){
+    var product=document.querySelector('.myform');
+    // var mybtn=document.querySelector('.mybtn');
+  product.classList.add("addproduct");
+  // mybtn.classList.add("noneproduct");
+  
+  }
+  </script>
+    <script>
+      $(document).ready(function() {
+        toastr.options = {
+                    'closeButton': true,
+                    'debug': false,
+                    'newestOnTop': false,
+                    'progressBar': true,
+                    'positionClass': 'toast-top-right',
+                    'preventDuplicates': false,
+                    'showDuration': '1000',
+                    'hideDuration': '1000',
+                    'timeOut': '5000',
+                    'extendedTimeOut': '1000',
+                    'showEasing': 'swing',
+                    'hideEasing': 'linear',
+                    'showMethod': 'fadeIn',
+                    'hideMethod': 'fadeOut',
+                }
+          toastr.options.timeOut =8000;
+          @if (Session::has('error'))
+              toastr.error('{{ Session::get('error') }}');
+          @elseif(Session::has('success'))
+              toastr.success('{{ Session::get('success') }}');
+          @elseif(Session::has('info'))
+              toastr.info('{{ Session::get('info') }}');
+          @endif
+         
+      });
+    
+    </script>
 
 </body>
 

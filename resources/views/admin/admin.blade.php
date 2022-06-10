@@ -16,7 +16,7 @@
                 </a>
 
                 <!-- LOGO -->
-                <a href="#" class="logo text-center logo-dark">
+                <a href="admin" class="logo text-center logo-dark">
                     <span class="logo-lg">
                         <img src="assets/images/logo-dark.png" alt="" height="16">
                     </span>
@@ -33,7 +33,7 @@
                         <li class="side-nav-title side-nav-item">Navigation</li>
 
                         <li class="side-nav-item">
-                            <a data-bs-toggle="collapse" href="#sidebarDashboards" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                            <a data-bs-toggle="collapse" href="admin" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                 <i class="uil-home-alt"></i>
                                 <span class="badge bg-success float-end">4</span>
                                 <span> Dashboards </span>
@@ -66,7 +66,7 @@
                             <div class="collapse" id="sidebarEcommerce">
                                 <ul class="side-nav-second-level">
                                     <li>
-                                        <a href="apps-ecommerce-products.html">Products</a>
+                                        <a href="adminproduct">Products</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-products-details.html">Products Details</a>
@@ -87,7 +87,7 @@
                                         <a href="apps-ecommerce-checkout.html">Checkout</a>
                                     </li>
                                     <li>
-                                        <a href="apps-ecommerce-sellers.html">Sellers</a>
+                                        <a href="sellers">Sellers</a>
                                     </li>
                                 </ul>
                             </div>
@@ -95,18 +95,6 @@
                      
                     </ul>
 
-                    <!-- Help Box -->
-                    <div class="help-box text-white text-center">
-                        <a href="javascript: void(0);" class="float-end close-btn text-white">
-                            <i class="mdi mdi-close"></i>
-                        </a>
-                        <img src="assets/images/help-icon.svg" height="90" alt="Helper Icon Image" />
-                        <h5 class="mt-3">Unlimited Access</h5>
-                        <p class="mb-3">Upgrade to plan to get access to unlimited reports</p>
-                        <a href="javascript: void(0);" class="btn btn-secondary btn-sm">Upgrade</a>
-                    </div>
-                    <!-- end Help Box -->
-                    <!-- End Sidebar -->
 
                     <div class="clearfix"></div>
 
