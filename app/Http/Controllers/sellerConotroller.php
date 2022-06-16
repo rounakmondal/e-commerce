@@ -134,6 +134,9 @@ else{
 }
 
 }
+public function order(){
+  return view('user/order');
+}
 
 }
 

@@ -79,5 +79,7 @@ Route::get('sellerprofile',[sellerConotroller::class,'sellerprofile']);
 Route::post('sellerupdate',[sellerConotroller::class,'sellerupdate']);
 
 
+Route::get('order',[sellerConotroller::class,'order']);
+
 
 
