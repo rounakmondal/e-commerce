@@ -45,7 +45,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="seller/dashboard/assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+        <span class="d-none d-lg-block">seller dashboard</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
@@ -206,17 +206,22 @@
           </ul><!-- End Messages Dropdown Items -->
 
         </li><!-- End Messages Nav -->
-
+        @php
+        $sellerdata = DB::table('sellerdatas')->where('email',session('email'))->first();
+        @endphp
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="seller/dashboard/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{$sellerdata->fname}}</span>
           </a><!-- End Profile Iamge Icon -->
+
+       
+
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
+              <h6>{{$sellerdata->fname}}</h6>
               <span>Web Designer</span>
             </li>
             <li>
@@ -224,7 +229,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+              <a class="dropdown-item d-flex align-items-center" href="sellerprofile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -504,7 +509,61 @@
   <script src="seller/dashboard/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="seller/dashboard/assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- Template Main JS File -->
+  
+
+{{-- modal for seller profile --}}
+
+
+  <div class="modal fade" id="sellerprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center" id="exampleModalLabel" >Register Yourself</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+           <form action='{{route('userdata')}}' enctype="multipart/form-data" method="POST">
+            @csrf
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Name....</label>
+                  <input type="name" name="name" class="form-control" style="height:20px;" id="name"  placeholder="Enter name ..">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address.....</label>
+                  <input type="email" class="form-control" style="height:20px;" id="email"  name="email" placeholder="Enter email...">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Number.....</label>
+                  <input type="number" class="form-control" style="height:20px;" id="number"  name="phone_number" placeholder="Enter  ph number">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Address...</label>
+                  <input type="address" class="form-control" style="height:20px;" id="address"  name="location" placeholder="Enter address">
+              
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" style="height:20px;" id="password" name="password" placeholder="enter your Password">
+                </div>
+               
+<div class="text-center">
+                <button type="submit" class="btn btn-primary text-center" id="register_btn">Register</button>
+            </div>
+          </form> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+{{-- end of a modal profile --}}
+
+
   <script src="seller/dashboard/assets/js/main.js"></script>
 	
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>

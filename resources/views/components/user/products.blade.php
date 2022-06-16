@@ -16,7 +16,9 @@ $pdata=DB::table('productdatas')->get();
             <div class="col-md-3 d-flex">
                 <div class="product ftco-animate">
                     <div class="img d-flex align-items-center justify-content-center" style='background:url({{"../images/".$key->product_oneimg}} );background-size:cover;'>
-                    
+
+                    @if(session()->has('useremail'))
+
                         <div class="desc">
                             <p class="meta-prod d-flex">
                                 <a href={{"/addcart/".$key->id}} class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
@@ -24,6 +26,16 @@ $pdata=DB::table('productdatas')->get();
                                 <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
                             </p>
                         </div>
+                        @else
+                        <div class="desc">
+                            <p class="meta-prod d-flex">
+                                <a href="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+                                <a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
+                            </p>
+                        </div>
+                        @endif
+
                     </div>
                     <div class="text text-center">
                         <span class="sale">Sale</span>

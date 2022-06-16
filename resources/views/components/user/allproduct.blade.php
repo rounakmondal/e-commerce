@@ -29,13 +29,20 @@
 				        </select>
 							</div>
 						</div>
+						@php
+						$pdata=DB::table('productdatas')->get();
+						
+						@endphp
 						<div class="row">
+									@foreach($pdata as $key)
+
 							<div class="col-md-4 d-flex">
 								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-1.jpg);">
+									<div class="img d-flex align-items-center justify-content-center" style='background:url({{"../images/".$key->product_oneimg}} );background-size:cover;'>
+								 
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
+												<a href={{"/addcart/".$key->id}} class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
 												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
@@ -49,208 +56,9 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-2.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="seller">Best Seller</span>
-										<span class="category">Gin</span>
-										<h2>Jim Beam Kentucky Straight</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
+						@endforeach
 							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-3.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="new">New Arrival</span>
-										<span class="category">Rum</span>
-										<h2>Citadelle</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-4.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Rum</span>
-										<h2>The Glenlivet</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-5.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Black Label</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-6.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Tequila</span>
-										<h2>Macallan</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-7.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Vodka</span>
-										<h2>Old Monk</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-8.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Jameson Irish Whiskey</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-9.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Screwball</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-10.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Screwball</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-11.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>McClelland's</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-4 d-flex">
-								<div class="product ftco-animate">
-									<div class="img d-flex align-items-center justify-content-center" style="background-image: url(user/images/prod-12.jpg);">
-										<div class="desc">
-											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
-											</p>
-										</div>
-									</div>
-									<div class="text text-center">
-										<span class="category">Whiskey</span>
-										<h2>Plantation</h2>
-										<span class="price">$69.00</span>
-									</div>
-								</div>
-							</div>
-						</div>
+				
 						<div class="row mt-5">
 		          <div class="col text-center">
 		            <div class="block-27">
@@ -283,39 +91,6 @@
               </div>
             </div>
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Recent Blog</h3>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(user/images/image_1.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(user/images/image_2.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url(user/images/image_3.jpg);"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
 					</div>
 				</div>
 			</div>

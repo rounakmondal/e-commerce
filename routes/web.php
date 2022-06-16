@@ -70,3 +70,14 @@ Route::get('addcart/{id}',[userControler::class,'addcart']);
 
 Route::get('removecart/{id}',[userControler::class,'removecart']);
 
+Route::get('product_single',[userControler::class,'product_single']);
+
+Route::get('sellerprofile',[sellerConotroller::class,'sellerprofile']);
+
+
+
+Route::post('sellerupdate',[sellerConotroller::class,'sellerupdate']);
+
+
+
+

@@ -31,25 +31,7 @@ class sellerConotroller extends Controller
         $password=$request->password;
         $phone=$request->has('phone');
      
-      //   if ($phone) {
-      //     $user = DB::table('sellerdatas')->where('phone_number', $phone)->exists();
-      //     $userdata = DB::table('sellerdatas')->where('phone_number', $phone)->first();
-      //     if($user){
-      //       $request->session()->put('email', $email);
-      //     $adminpassword = $userdata->password;
-      //     if( $adminpassword == $password){
-      //   return response()->json(["success" =>"log in sucessfully"]);
-      //  }
-      //      else{
-      //   return response()->json(["error" => "password is incorrect"]);
-      //  }
-        
-  
-      // }
-      //       else{
-      //   return response()->json(["phone" => "phone_number not found"]);
-      // }
-        // }
+   
     
         $user = DB::table('sellerdatas')->where('email', $email)->exists();
         $userdata = DB::table('sellerdatas')->where('email', $email)->first();
@@ -128,8 +110,30 @@ public function productup(Request $req)
 }
 
 
+public function sellerprofile() {
+  
+  return view('seller/sellerprofile');
 
 
+}
+public function sellerupdate(Request $req){
+  dd($req->all());
+  $userdata=new sellerdata;
+  $userdata->fname=$req->full_name; 
+  $userdata->email=$req->emailaddress; 
+  $userdata->phone_number=$req->phone; 
+  $userdata->location=$req->location; 
+  $userdata->password=$req->password; 
+  $res=$userdata->save();
+  if($res){
+    return back()->with('success', 'Success! User updated');
+}
+else{
+
+    return back()->with('error', 'not updated .... ');
+}
+
+}
 
 }
 

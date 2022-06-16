@@ -128,5 +128,11 @@ class userControler extends Controller
 
                         }
 
+
+
+                        public function product_single(){
+                            return view('user/product_single');
+                        }
+
  
 }

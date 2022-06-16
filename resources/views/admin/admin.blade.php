@@ -6,9 +6,9 @@
             <div class="leftside-menu">
     
                 <!-- LOGO -->
-                <a href="index.html" class="logo text-center logo-light">
+                <a href="admin" class="logo text-center logo-light">
                     <span class="logo-lg">
-                        <img src="assets/images/logo.png" alt="" height="16">
+                        <h3>admin dashboard</h3>
                     </span>
                     <span class="logo-sm">
                         <img src="assets/images/logo_sm.png" alt="" height="16">
@@ -68,17 +68,9 @@
                                     <li>
                                         <a href="adminproduct">Products</a>
                                     </li>
+                              
                                     <li>
-                                        <a href="apps-ecommerce-products-details.html">Products Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-ecommerce-orders.html">Orders</a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-ecommerce-orders-details.html">Order Details</a>
-                                    </li>
-                                    <li>
-                                        <a href="apps-ecommerce-customers.html">Customers</a>
+                                        <a href="customers">Customers</a>
                                     </li>
                                     <li>
                                         <a href="apps-ecommerce-shopping-cart.html">Shopping Cart</a>

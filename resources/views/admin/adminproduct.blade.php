@@ -14,7 +14,7 @@
                     <img src="assets/images/logo.png" alt="" height="16">
                 </span>
                 <span class="logo-sm">
-                    <img src="assets/images/logo_sm.png" alt="" height="16">
+                   <h3>admin dashboard<h3>
                 </span>
             </a>
 

@@ -20,52 +20,56 @@
   </head>
   <body>
 
+    
     <div class="wrap">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-6 d-flex align-items-center">
-                      <p class="mb-0 phone pl-md-2">
-                          <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
-                          <a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
-                      </p>
-                  </div>
-                  <div class="col-md-6 d-flex justify-content-md-end">
-                      <div class="social-media mr-4">
-                      <p class="mb-0 d-flex">
-                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-                          <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-                      </p>
+      <div class="container">
+          <div class="row">
+              <div class="col-md-6 d-flex align-items-center">
+                  <p class="mb-0 phone pl-md-2">
+                      <a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
+                      <a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+                  </p>
               </div>
+              <div class="col-md-6 d-flex justify-content-md-end">
+                  <div class="social-media mr-4">
+                  <p class="mb-0 d-flex">
+                      <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                      <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                      <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                      <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+                  </p>
+          </div>
 {{--            
-            @php
-               $userdata = DB::table('user_data')->where('useremail', $email)->exists();
-              $myuserdata = DB::table('user_data')->where('useremail', $email)->get();
+        @php
+           $userdata = DB::table('user_data')->where('useremail', $email)->exists();
+          $myuserdata = DB::table('user_data')->where('useremail', $email)->get();
+        @endphp --}}
 
-            @endphp --}}
-
-          
-              @if(session()->has('useremail'))
-              @php
-
-              $userdata =  DB::table('userinfodatas')->where('email', session('useremail'))->first();
-       
-              @endphp
-              <div class="reg">
-                <p class="mb-0"><a href="profile" class="mr-2">{{$userdata->name}} </a> <a href="userlogout">Log Out</a></p>
-              </div>
-            @else
-            <div class="reg">
-                <p class="mb-0"><a href="#" class="mr-2"  data-toggle="modal" data-target="#register"> sign up </a> <a href="#" data-toggle="modal" data-target="#exampleModal">Log In</a></p>
-              </div>
-             @endif
       
-          
-                  </div>
+          @if(session()->has('useremail'))
+          @php
+          $userdata =  DB::table('userinfodatas')->where('email', session('useremail'))->first();
+   
+          @endphp
+          <div class="reg">
+            <p class="mb-0"><a href="profile" class="mr-2">{{$userdata->name}} </a> <a href="userlogout">Log Out</a></p>
+          </div>
+        @else
+        <div class="reg">
+            <p class="mb-0"><a href="#" class="mr-2"  data-toggle="modal" data-target="#register"> sign up </a> <a href="#" data-toggle="modal" data-target="#exampleModal">Log In</a></p>
+          </div>
+         @endif
+  
+      
               </div>
           </div>
       </div>
+  </div>
+
+
+
+
+
   
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
       <div class="container">
@@ -110,18 +114,18 @@
 
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item active"><a href="/" class="nav-link">Home</a></li>
             <li class="nav-item"><a href="about" class="nav-link">About</a></li>
             <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
             <div class="dropdown-menu" aria-labelledby="dropdown04">
-                <a class="dropdown-item" href="product.html">Products</a>
-              <a class="dropdown-item" href="product-single.html">Single Product</a>
+                <a class="dropdown-item" href="allproduct">Products</a>
+              <a class="dropdown-item" href="product_single">Single Product</a>
               <a class="dropdown-item" href="cart">Cart</a>
               <a class="dropdown-item" href="checkout.html">Checkout</a>
             </div>
           </li>
-            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="contact" class="nav-link">Contact</a></li>
     
       
           </ul>
