@@ -137,6 +137,9 @@ else{
 public function order(){
   return view('user/order');
 }
+public function myorder(){
+  return view('user/order');
+}
 
 }
 
